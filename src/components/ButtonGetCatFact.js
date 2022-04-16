@@ -15,11 +15,14 @@ export default function ButtonGetCatFact({ setCatFact }) {
 
   return (
     <>
-      <button
-        className="flex my-5 p-5 rounded-xl mx-auto rounded-center max-w-sm font-bold text-white bg-pink-500  hover:bg-pink-600"
-        onClick={getCatFact}>
-        Get a cat fact
-      </button>
+      <div className="mx-auto">
+        <button
+          className="my-5 p-5 rounded-xl max-w-sm font-bold text-white bg-pink-500  hover:bg-pink-600"
+          onClick={getCatFact}
+        >
+          Get a cat fact
+        </button>
+      </div>
     </>
   );
 }
