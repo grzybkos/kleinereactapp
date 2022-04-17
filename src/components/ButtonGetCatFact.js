@@ -2,10 +2,16 @@ import { useEffect } from "react";
 
 export default function ButtonGetCatFact({ setCatFact }) {
   async function getCatFact() {
-    const response = await fetch("https://cat-fact.herokuapp.com/facts/random");
-    const parseRes = await response.json();
-    // console.log(parseRes);
-    setCatFact(parseRes.text);
+    try {
+      const response = await fetch(
+        "https://cat-fact.herokuapp.com/facts/random"
+      );
+      const parseRes = await response.json();
+      // console.log(parseRes);
+      setCatFact(parseRes.text);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // triggering twice in strict mode

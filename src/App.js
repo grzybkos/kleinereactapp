@@ -5,8 +5,8 @@ import ButtonGetCatImage from "./components/ButtonGetCatImage";
 import CatImage from "./components/CatImage";
 
 function App() {
-  const [catFact, setCatFact] = useState("Cat fact");
-  const [catImageURL, setCatImageURL] = useState();
+  const [catFact, setCatFact] = useState("");
+  const [catImageURL, setCatImageURL] = useState("");
   return (
     <>
       <div className="flex min-h-screen items-center bg-gradient-to-t from-pink-200 via-pink-100 to-pink-200">

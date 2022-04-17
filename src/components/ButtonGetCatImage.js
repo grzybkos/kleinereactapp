@@ -3,18 +3,29 @@ import { useEffect, useState } from "react";
 export default function ButtonGetCatImage({ setCatImageURL }) {
   const [catSaysText, setCatSaysText] = useState("");
   async function getCatImage() {
-    const response = await fetch(
-      `https://cataas.com/cat/cute${
-        catSaysText ? `/says/${catSaysText}?size=100` : ""
-      }`
-    );
-    const blob = await response.blob();
-    const url = URL.createObjectURL(blob);
-    setCatImageURL(url);
+    try {
+      const response = await fetch(
+        `https://cataas.com/cat/cute${
+          catSaysText ? `/says/${catSaysText}?size=100` : ""
+        }`
+      );
+      if (response.status !== 200) {
+        setCatImageURL("");
+        return;
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      setCatImageURL(url);
+    } catch (error) {
+      console.error(error);
+      setCatImageURL("");
+    }
   }
+
   useEffect(() => {
     getCatImage();
   }, []);
+
   return (
     <>
       <div className="h-24 mx-auto w-auto">
